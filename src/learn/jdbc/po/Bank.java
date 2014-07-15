@@ -1,11 +1,22 @@
 package learn.jdbc.po;
 
-public class Bank {
+import java.io.Serializable;
+
+public class Bank implements Serializable{
 	private String ID;
 	private String PID;
 	private String Name;
 	private String Level;
 	private String GID;
+	private String Status;
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 	private String Reserved;
 	
 	public void Bank(){}

@@ -49,9 +49,7 @@ public class OperatorDAOImpl implements OperatorDAO {
 		}  finally{
 			DBManager.dbClose(rs, pstmt, conn);
 		}
-		System.out.println(operator.getName());
-		System.out.println(operator.getPID());
-	
+
 		return operator;
 	}
 	
@@ -188,15 +186,14 @@ public class OperatorDAOImpl implements OperatorDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt;
 		Connection conn;
-		String sql="update Operator set BankID=?,SigCod=?,Node=?,Status=?,Permission=?,Password=?,OperatorName=?,Creator=?,Checker=?,CreateDate=?,Reserved=? where OperatorID =?";
+		String sql="update Operator set BankID=?,OperatorID=?,SigCod=?,Node=?,Status=?,Permission=?,Password=?,OperatorName=?,Creator=?,Checker=?,CreateDate=?,Reserved=? where OperatorID =? order by OperatorID";
 		try {
 			conn=DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			int index=1;
 			pstmt.setString(index++, Operator.getBankID());
-			//pstmt.setString(index++, Operator.getOperatorID());
+			pstmt.setString(index++, Operator.getOperatorID());
 			pstmt.setString(index++, Operator.getSigCod());
-			System.out.println(Operator.getSigCod());
 			pstmt.setString(index++, Operator.getNode());
 			pstmt.setInt(index++, Operator.getStatus());
 			pstmt.setString(index++, Operator.getPermission());
@@ -213,7 +210,6 @@ public class OperatorDAOImpl implements OperatorDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("dingdingdingdingding~~");
 	}
 
 	@Override

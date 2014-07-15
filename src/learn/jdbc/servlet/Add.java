@@ -21,6 +21,7 @@ public class Add extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//request.setCharacterEncoding("UTF-8");
 		Operator operator=new Operator();
 		String bankID=request.getParameter("BankID");
 		String operatorID=request.getParameter("OperatorID");

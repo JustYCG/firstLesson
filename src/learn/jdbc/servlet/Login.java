@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//request.setCharacterEncoding("UTF-8");
 		String OperatorID = request.getParameter("OperatorID"); 		
 		String Password = request.getParameter("Password"); 
 		Operator operatorInf=operatorService.login(OperatorID, Password);

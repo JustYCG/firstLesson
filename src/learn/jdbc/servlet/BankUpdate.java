@@ -1,24 +1,19 @@
 package learn.jdbc.servlet;
-/*
- * list all product infor
- */
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import learn.jdbc.po.Operator;
-import learn.jdbc.service.*;
+import learn.jdbc.po.Bank;
+import learn.jdbc.service.BankService;
+import learn.jdbc.service.BankServiceImpl;
 
-public class QueryAllServlet extends HttpServlet {
-	private OperatorService operatorService=new OperatorServiceImpl();
+public class BankUpdate extends HttpServlet {
+	private BankService bankService=new BankServiceImpl();
 	/**
 	 * The doGet method of the servlet. <br>
 	 *
@@ -46,10 +41,26 @@ public class QueryAllServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			//request.setCharacterEncoding("UTF-8");
-			List<Operator> operator=operatorService.queryAll();
-			HttpSession session=request.getSession();
-			session.setAttribute("operator", operator);
-			request.getRequestDispatcher("./product_List.jsp").forward(request, response);}
+			Bank bank=new Bank();
+			String ID=request.getParameter("ID");
+			String PID=request.getParameter("PID");
+			String GID=request.getParameter("GID");
+			String Name=request.getParameter("Name");
+			String Status=request.getParameter("Status");
+			String Level=request.getParameter("Level");
+			String Reserved=request.getParameter("Reserved");
+			
+			bank.setID(ID);
+			bank.setPID(PID);
+			bank.setGID(GID);
+			bank.setName(Name);
+			bank.setStatus(Status);
+			bank.setLevel(Level);
+			bank.setReserved(Reserved);
+			
+			
+			bankService.update(bank);
+			request.getRequestDispatcher("queryBank").forward(request, response);
+	}
 
 }

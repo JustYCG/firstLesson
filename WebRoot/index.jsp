@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   部   门   代   号 ： ${operatorInf.name}</br>
   
    ——————————————————————————————————————————————</br>-->
- <a href="query">管理操作人员信息</a>
+ <a href="query">管理操作人员信息</a></br>
+ <a href="queryBank">管理部门信息</a></br>
  </body>
 </html>

@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <%Operator operator=(Operator)session.getAttribute("oprs");%>
+  <%Bank bank=(Bank)session.getAttribute("bankrs");%>
   <style type="text/css">
 table.gridtable {
 	font-family: verdana,arial,sans-serif;
@@ -46,35 +46,25 @@ table.gridtable input { width:100%; height:100%;}
   
    ——————————————————————————————————————————————--></br>
 
-  <form action="./update.do" method="post">
+  <form action="./bupd.do" method="post">
   <table class="gridtable">
 	<tr>
-	<th>行号</th>
-	<th>操作员号</th>
-	<th>身份证号</th>
-	<th>节点号</th>
-	<th>状态</th>
-	<th>权限</th>
-	<th>密码</th>
-	<th>姓名</th>
-	<th>创建人</th>
-	<th>复核人</th>
-	<th>创建日期</th>
-	<th>保留</th>
+<th>行号</th>
+<th>部门号</th>
+<th>组码</th>
+<th>等级</th>
+<th>部门名称</th>
+<th>状态</th>
+<th>保留</th>
 </tr>
 <tr>
-	<td><input type="text" name="BankID" value="<%=operator.getBankID() %>"></td>
-	<td><input type="text" name="OperatorID" value="<%=operator.getOperatorID() %>"></td>
-	<td><input type="text" name="SigCod" value="<%=operator.getSigCod() %>"></td>
-	<td><input type="text" name="Node" value="<%=operator.getNode() %>"></td>
-	<td><input type="text" name="Status" value="<%=operator.getStatus() %>"></td>
-	<td><input type="text" name="Permission" value="<%=operator.getPermission() %>"></td>
-	<td><input type="text" name="Password" value="<%=operator.getPassword() %>"></td>
-	<td><input type="text" name="OperatorName" value="<%=operator.getOperatorName() %>"></td>
-	<td><input type="text" name="Creator" value="<%=operator.getCreator() %>"></td>
-	<td><input type="text" name="Checker" value="<%=operator.getChecker() %>"></td>
-	<td><input type="text" name="CreateDate" value="<%=operator.getCreateDate() %>"></td>
-	<td><input type="text" name="Reserved" value="<%=operator.getReserved() %>"></td>
+	<td><input type="text" name="ID" size="32" value=<%=bank.getID() %> ></td>
+	<td><input type="text" name="PID" size="32" value=<%=bank.getPID() %>></td>
+	<td><input type="text" name="GID" size="64" value=<%=bank.getGID() %>></td>
+	<td><input type="text" name="Level" size="2" value=<%=bank.getLevel() %>></td>
+	<td><input type="text" name="Name" size="100" value=<%=bank.getName() %>></td>
+	<td><input type="text" name="Status" size="1" value=<%=bank.getStatus() %>></td>
+	<td><input type="text" name="Reserved" value=<%=bank.getReserved() %>></td>
 	<td><input type="submit" value="更新"></td>
 	<td><input type="reset" value="重置"></td>
 	
